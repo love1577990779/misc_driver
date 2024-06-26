@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/kernel/v4l2/my_v4l2_driver.mod := printf '%s\n'   sample_v4l2_driver.o | awk '!x[$$0]++ { print("/home/zero/git/kernel/v4l2/"$$0) }' > /home/zero/git/kernel/v4l2/my_v4l2_driver.mod

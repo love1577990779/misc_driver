@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/kernel/v4l2/my_v4l2_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/zero/git/kernel/v4l2/my_v4l2_driver.ko /home/zero/git/kernel/v4l2/my_v4l2_driver.o /home/zero/git/kernel/v4l2/my_v4l2_driver.mod.o;  make -f ./arch/x86/Makefile.postlink /home/zero/git/kernel/v4l2/my_v4l2_driver.ko
