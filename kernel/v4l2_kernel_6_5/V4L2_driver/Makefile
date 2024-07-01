@@ -16,6 +16,8 @@ $(MODULE_NAME)-objs += v4l2_driver.o
 #$(MODULE_NAME)-objs += v4l2-compat-ioctl32.o
 #$(MODULE_NAME)-objs += v4l2-trace.o
 #$(MODULE_NAME)-objs += videobuf2-vmalloc.o
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-async.o
+
 
 # 编译模块
 driver:

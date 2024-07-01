@@ -24,7 +24,25 @@
 #include <media/v4l2-common.h>
 
 
-struct v4l2_async_notifier simple_notifier;
+struct v4l2_async_notifier simple_notifier = {0};
+struct v4l2_async_subdev simple_asd = 
+{
+	.match_type = V4L2_ASYNC_MATCH_FWNODE,
+};
+
+
+
+
+static int isp_subdev_notifier_complete(struct v4l2_async_notifier *async)
+{
+	printk(KERN_ALERT "isp_subdev_notifier_complete exec!\r\n");
+	return 0;
+}
+
+static const struct v4l2_async_notifier_operations notifier_ops = {
+	.complete = isp_subdev_notifier_complete,
+};
+
 
 
 static long my_video_ioctl2(struct file *file,
@@ -58,7 +76,17 @@ static struct v4l2_device my_v4l2_dev =
 	.ctrl_handler = &sample_v4l2_dev.sample_handler , 
 };
 
+struct v4l2_subdev simple_v4l2_sd_1 = 
+{
+	0
+};
 
+
+
+struct v4l2_subdev v4l2_sd = 
+{
+	0 
+};
 
 static int sample_querycap(struct file *file, void  *priv,
 					struct v4l2_capability *cap)
@@ -201,7 +229,7 @@ void sample_vdev_init(void)
 static int __init hello_init(void)
 {
 	int ret = 0;
-    printk(KERN_ALERT "Hello, World!\n");
+	printk(KERN_EMERG "Hello, World!\n");
 	dev_set_name(&sample_v4l2_dev.dev, "sample_dev");
 	device_initialize(&sample_v4l2_dev.dev);
 	printk(KERN_ALERT "device_initialize : ret = %d!\n" , ret);
@@ -220,7 +248,7 @@ static int __init hello_init(void)
 
 	init_ctrl_ops();
 	init_ctrl_config();
-	ret = v4l2_ctrl_new_custom(&sample_v4l2_dev.sample_handler , &sample_v4l2_dev.sample_ctrl_class , NULL);
+	//ret = v4l2_ctrl_new_custom(&sample_v4l2_dev.sample_handler , &sample_v4l2_dev.sample_ctrl_class , NULL);
 	printk(KERN_ALERT "v4l2_ctrl_new_custom : ret = %d!\n" , ret);
     
 	//sample_v4l2_dev.v4l2_dev.ctrl_handler = &sample_v4l2_dev.sample_handler;
@@ -236,12 +264,27 @@ static int __init hello_init(void)
 	sample_vdev_init();
 	ret = video_register_device(&sample_v4l2_dev.sample_video_dev , VFL_TYPE_VIDEO , 0);
 
+	v4l2_sd.dev = my_v4l2_dev.dev;
+	strscpy(v4l2_sd.name , "simple_v4l2_sd" , sizeof(v4l2_sd.name));
+	ret = v4l2_device_register_subdev(&my_v4l2_dev, &v4l2_sd);
+	if (ret < 0)
+		printk(KERN_ALERT "line:%d , v4l2_device_register_subdev fail : ret = %d!\n" , __LINE__ , ret);
+
+	strscpy(simple_v4l2_sd_1.name , "simple_v4l2_sd_1" , sizeof(simple_v4l2_sd_1.name));
+	ret = v4l2_async_register_subdev(&simple_v4l2_sd_1);
+	if (ret)
+		printk(KERN_ALERT "line:%d , v4l2_async_register_subdev fail : ret = %d!\n" , __LINE__ , ret);
+
+	v4l2_async_nf_init(&simple_notifier);
+	simple_notifier.ops = &notifier_ops;
+	ret = __v4l2_async_nf_add_subdev(&simple_notifier , &simple_asd);
+	if (ret)
+			printk(KERN_ALERT "line:%d , __v4l2_async_nf_add_subdev fail : ret = %d!\n" , __LINE__ , ret);
+
 	ret = v4l2_async_nf_register(&my_v4l2_dev, &simple_notifier);
 	if (ret)
-	{}
+		printk(KERN_ALERT "line:%d , v4l2_async_nf_register fail : ret = %d!\n" , __LINE__ , ret);
 	
-
-
 	return 0;
 
 }
