@@ -12,12 +12,15 @@ obj-m = $(MODULE_NAME).o
 #$(MODULE_NAME)-objs += videobuf2-v4l2.o
 $(MODULE_NAME)-objs += v4l2_driver.o
 #$(MODULE_NAME)-objs += videobuf2-core.o
-#$(MODULE_NAME)-objs += v4l2-ioctl.o
-#$(MODULE_NAME)-objs += v4l2-compat-ioctl32.o
-#$(MODULE_NAME)-objs += v4l2-trace.o
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-ioctl.o
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-compat-ioctl32.o
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-trace.o
 #$(MODULE_NAME)-objs += videobuf2-vmalloc.o
 $(MODULE_NAME)-objs += ./v4l2-core/v4l2-async.o
-
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-device.o
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-spi.o
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-i2c.o
+$(MODULE_NAME)-objs += ./v4l2-core/v4l2-subdev.o
 
 # 编译模块
 driver:

@@ -1,4 +1,5 @@
 
+
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/videodev2.h>
@@ -35,7 +36,12 @@ struct v4l2_async_subdev simple_asd =
 
 static int isp_subdev_notifier_complete(struct v4l2_async_notifier *async)
 {
+	unsigned int ret = 0;
 	printk(KERN_ALERT "isp_subdev_notifier_complete exec!\r\n");
+	ret = __v4l2_device_register_subdev_nodes(async->v4l2_dev , false);
+	if(ret)
+		printk(KERN_ALERT "line:%d , isp_subdev_notifier_complete fail : ret = %d!\n" , __LINE__ , ret);
+
 	return 0;
 }
 
@@ -266,14 +272,19 @@ static int __init hello_init(void)
 
 	v4l2_sd.dev = my_v4l2_dev.dev;
 	strscpy(v4l2_sd.name , "simple_v4l2_sd" , sizeof(v4l2_sd.name));
+	v4l2_sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
 	ret = v4l2_device_register_subdev(&my_v4l2_dev, &v4l2_sd);
 	if (ret < 0)
 		printk(KERN_ALERT "line:%d , v4l2_device_register_subdev fail : ret = %d!\n" , __LINE__ , ret);
 
 	strscpy(simple_v4l2_sd_1.name , "simple_v4l2_sd_1" , sizeof(simple_v4l2_sd_1.name));
+	simple_v4l2_sd_1.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
 	ret = v4l2_async_register_subdev(&simple_v4l2_sd_1);
+
 	if (ret)
 		printk(KERN_ALERT "line:%d , v4l2_async_register_subdev fail : ret = %d!\n" , __LINE__ , ret);
+
+
 
 	v4l2_async_nf_init(&simple_notifier);
 	simple_notifier.ops = &notifier_ops;
@@ -285,6 +296,8 @@ static int __init hello_init(void)
 	if (ret)
 		printk(KERN_ALERT "line:%d , v4l2_async_nf_register fail : ret = %d!\n" , __LINE__ , ret);
 	
+
+
 	return 0;
 
 }
