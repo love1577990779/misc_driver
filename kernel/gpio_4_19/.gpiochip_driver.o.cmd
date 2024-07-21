@@ -1,0 +1,1 @@
+cmd_/home/zero/git/misc_driver/kernel/gpio_4_19/gpiochip_driver.o := ld -m elf_x86_64  -z max-page-size=0x200000    -r -o /home/zero/git/misc_driver/kernel/gpio_4_19/gpiochip_driver.o /home/zero/git/misc_driver/kernel/gpio_4_19/gpiochip.o 

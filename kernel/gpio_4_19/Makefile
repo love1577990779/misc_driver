@@ -1,0 +1,22 @@
+
+MY_OBJ_TARGET := gpiochip_driver
+obj-m := $(MY_OBJ_TARGET).o
+
+TEST_SB := $(wildcard *.c)
+
+$(MY_OBJ_TARGET)-objs := gpiochip.o
+##$(MY_OBJ_TARGET)-objs += gpiolib.o
+
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) 
+	# gcc -o test_input_demo.elf test_input_demo.c
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	rm -rf ./*.o ./*.elf
+
+test:
+	@echo $(obj-m)
+
+	@echo $(my_v4l2_driver-objs)
