@@ -1,1 +1,0 @@
-cmd_/home/zero/v4l2/V4L2_driver_20240430_18_34/V4L2_driver/modules.order := {   echo /home/zero/v4l2/V4L2_driver_20240430_18_34/V4L2_driver/v4l2_drv.ko; :; } | awk '!x[$$0]++' - > /home/zero/v4l2/V4L2_driver_20240430_18_34/V4L2_driver/modules.order
