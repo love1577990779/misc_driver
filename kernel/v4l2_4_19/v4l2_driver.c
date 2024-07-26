@@ -25,14 +25,6 @@
 
 
 
-static long my_video_ioctl2(struct file *file,
-	       unsigned int cmd, unsigned long arg)
-{
-	printk(KERN_ALERT "my_video_ioctl2 : enter!\r\n");
-	//return video_usercopy(file, cmd, arg, __video_do_ioctl);
-	return 0;
-}
-
 
 
 struct sample_v4l2
@@ -75,13 +67,21 @@ static int sample_g_fmt_cap(struct file *file, void *priv,
 	return 0;
 }
 
-
+static const struct v4l2_file_operations simple_v4l2_fops = {
+	.owner						= THIS_MODULE,
+	.open							= v4l2_fh_open,
+	.release					= v4l2_fh_release,
+	.read							= vb2_fop_read,
+	.write						= vb2_fop_write,
+	.poll							= vb2_fop_poll,
+	.unlocked_ioctl		= video_ioctl2,
+	.mmap							= vb2_fop_mmap,
+};
 
 
 static const struct v4l2_ioctl_ops sample_v4l2_ioctl_ops = {
 	.vidioc_reqbufs		= vb2_ioctl_reqbufs,
 	.vidioc_querycap = sample_querycap ,
-	//.vidioc_reqbufs		= clone_vb2_ioctl_reqbufs ,
 	.vidioc_g_fmt_vid_cap		= sample_g_fmt_cap,
 	.vidioc_querybuf		= vb2_ioctl_querybuf,
 	.vidioc_qbuf			= vb2_ioctl_qbuf,
@@ -135,9 +135,17 @@ void sample_buf_queue(struct vb2_buffer *vb)
 
 static int sample_start_streaming(struct vb2_queue *vq, unsigned count)
 {
-
-	//vb2_buffer_done(sample_v4l2_dev.sample_queue.bufs[0] , VB2_BUF_STATE_DONE);
 	printk(KERN_ALERT "sample_start_streaming : enter!\r\n");
+	struct vb2_buffer* vb = NULL;
+	void* addr = NULL;
+	if(!list_empty(&vq->queued_list))
+	{
+		vb = list_first_entry(&vq->queued_list , struct vb2_buffer , queued_entry);
+		addr = vq->mem_ops->vaddr(vb->planes[0].mem_priv);
+		*((unsigned char*)addr) = 2;
+	}
+	vb2_buffer_done(vb , VB2_BUF_STATE_DONE);
+	
 	return 0;
 }
 
@@ -172,18 +180,18 @@ int sample_vdev_open(struct file *file)
 
 void sample_vdev_ops_init(void)
 {
-	//sample_v4l2_dev.sample_vdev_ops.open = sample_vdev_open;
+
 	sample_v4l2_dev.sample_vdev_ops.open = v4l2_fh_open;
 	sample_v4l2_dev.sample_vdev_ops.unlocked_ioctl = video_ioctl2;
 	sample_v4l2_dev.sample_vdev_ops.mmap = vb2_fop_mmap;
 	sample_v4l2_dev.sample_vdev_ops.poll = vb2_fop_poll;
-	//sample_v4l2_dev.sample_vdev_ops.unlocked_ioctl = my_video_ioctl2;
+
 }
 
 
 void sample_vdev_init(void)
 {
-	sample_v4l2_dev.sample_video_dev.fops = &sample_v4l2_dev.sample_vdev_ops;
+	sample_v4l2_dev.sample_video_dev.fops = &simple_v4l2_fops;
 	sample_v4l2_dev.sample_video_dev.release = sample_vdev_release;
 	sample_v4l2_dev.sample_video_dev.v4l2_dev = &sample_v4l2_dev.v4l2_dev;
 	sample_v4l2_dev.sample_video_dev.device_caps = V4L2_CAP_STREAMING | V4L2_CAP_READWRITE | V4L2_CAP_VIDEO_CAPTURE;
@@ -230,8 +238,7 @@ static int __init hello_init(void)
 	sample_vdev_ops_init();
 	sample_vdev_init();
 	ret = video_register_device(&sample_v4l2_dev.sample_video_dev , VFL_TYPE_GRABBER , 0);
-	//printk(KERN_ALERT "sample_v4l2_dev.sample_video_dev.vfl_dir = %d\r\n" , sample_v4l2_dev.sample_video_dev.vfl_dir);
-	//printk(KERN_ALERT "sample_v4l2_dev.sample_video_dev.dev.kobj.name = %s\r\n" , sample_v4l2_dev.sample_video_dev.dev.kobj.name);
+
 	printk(KERN_ALERT "video_register_device : ret = %d!\n" , ret);
 
 	

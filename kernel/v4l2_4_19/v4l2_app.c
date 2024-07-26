@@ -25,15 +25,10 @@ int main(void)
 	v4l2_buffer.memory = V4L2_MEMORY_MMAP;
 	ret = ioctl(fd , VIDIOC_QUERYBUF , &v4l2_buffer);
 
-	printf("v4l2_buffer.length = %d , v4l2_buffer.m.offset = 0x%x\r\n" , v4l2_buffer.length , v4l2_buffer.m.offset);
-
-	addr = mmap(NULL , v4l2_buffer.length, PROT_READ | PROT_WRITE, MAP_SHARED, fd, v4l2_buffer.m.offset);
-
-	printf("addr = 0x%x\r\n" , addr);
-
 	ret = ioctl(fd, VIDIOC_QBUF, &v4l2_buffer);
 
 	ret = ioctl(fd, VIDIOC_STREAMON, &type);
+
 
 	fd_set read_fds;
 	struct timeval tv;
@@ -42,11 +37,14 @@ int main(void)
 	memset(&tv , 0 , sizeof(tv));
 	tv.tv_sec = 20;
 	tv.tv_usec = 0;
-
 	ret = select(fd + 1 , &read_fds , NULL , NULL , &tv);
+
+
+	addr = mmap(NULL , v4l2_buffer.length, PROT_READ | PROT_WRITE, MAP_SHARED, fd, v4l2_buffer.m.offset);
+
+	printf("addr = 0x%x , addr[0] = %d\r\n" , addr , ((unsigned char*)addr)[0]);
 
 	ret = ioctl(fd, VIDIOC_DQBUF, &v4l2_buffer);
 
-	
 	printf("ret = %d\r\n" , ret);
 }
