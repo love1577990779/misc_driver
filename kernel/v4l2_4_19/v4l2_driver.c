@@ -43,6 +43,8 @@ struct sample_v4l2
 };
 
 struct sample_v4l2 sample_v4l2_dev;
+struct v4l2_format g_v4l2_pix_format;
+
 
 static int sample_querycap(struct file *file, void  *priv,
 					struct v4l2_capability *cap)
@@ -55,17 +57,21 @@ static int sample_querycap(struct file *file, void  *priv,
 	return 0;
 }
 
-
-
-
-
-
 static int sample_g_fmt_cap(struct file *file, void *priv,
 			   struct v4l2_format *f)
 {
 	printk(KERN_ALERT "sample_g_fmt_cap : enter!\r\n");
 	return 0;
 }
+
+int debug_vb2_fop_mmap(struct file *file, struct vm_area_struct *vma)
+{
+	int ret = 0;
+	printk(KERN_ALERT "debug_vb2_fop_mmap enter!\r\n");
+	ret = vb2_fop_mmap(file, vma);
+	return ret;
+}
+
 
 static const struct v4l2_file_operations simple_v4l2_fops = {
 	.owner						= THIS_MODULE,
@@ -74,12 +80,12 @@ static const struct v4l2_file_operations simple_v4l2_fops = {
 	.read							= vb2_fop_read,
 	.write						= vb2_fop_write,
 	.poll							= vb2_fop_poll,
-	.unlocked_ioctl		= video_ioctl2,
-	.mmap							= vb2_fop_mmap,
+	.unlocked_ioctl					= video_ioctl2,
+	.mmap							= debug_vb2_fop_mmap,
 };
 
 
-int simple_fmt_vid_cap(struct file *file , void *fh , struct v4l2_fmtdesc *f)
+int simple_enum_fmt_vid_cap(struct file *file , void *fh , struct v4l2_fmtdesc *f)
 {
 	if(f->index > 1)
 		return -1;
@@ -89,11 +95,41 @@ int simple_fmt_vid_cap(struct file *file , void *fh , struct v4l2_fmtdesc *f)
 	return 0;
 }
 
+int simple_set_fmt_vid_cap(struct file *file, void *fh,struct v4l2_format *f)
+{
+	memcpy(&g_v4l2_pix_format , f , sizeof(sizeof(g_v4l2_pix_format)));
+	printk(KERN_ALERT "g_v4l2_pix_format.fmt.pix.width = %d , g_v4l2_pix_format.fmt.pix.height = %d\r\n" , g_v4l2_pix_format.fmt.pix.width , g_v4l2_pix_format.fmt.pix.height);
+	return 0;
+}
+
+int debug_vb2_ioctl_reqbufs(struct file *file, void *priv,
+			  struct v4l2_requestbuffers *p)
+{
+	int ret = 0;
+	//printk(KERN_ALERT "sample_v4l2_dev.sample_queue.num_buffers = %d\r\n" , sample_v4l2_dev.sample_queue.num_buffers);
+	ret = vb2_ioctl_reqbufs(file , priv , p);
+	//printk(KERN_ALERT "sample_v4l2_dev.sample_queue.num_buffers = %d\r\n" , sample_v4l2_dev.sample_queue.num_buffers);
+	printk(KERN_ALERT "sample_v4l2_dev.sample_queue.bufs[0]->planes[0].m.offset = %d\r\n" , sample_v4l2_dev.sample_queue.bufs[0]->planes[0].m.offset);
+	printk(KERN_ALERT "sample_v4l2_dev.sample_queue.bufs[1]->planes[0].m.offset = %d\r\n" , sample_v4l2_dev.sample_queue.bufs[1]->planes[0].m.offset);
+	printk(KERN_ALERT "sample_v4l2_dev.sample_queue.bufs[2]->planes[0].m.offset = %d\r\n" , sample_v4l2_dev.sample_queue.bufs[2]->planes[0].m.offset);
+	return ret;
+}
+
+int debug_vb2_ioctl_create_bufs(struct file *file , void *priv , struct v4l2_create_buffers *p)
+{
+	int ret = 0;
+	//printk(KERN_ALERT "before vb2_ioctl_create_bufs , sample_v4l2_dev.sample_queue.num_buffers = %d\r\n" , sample_v4l2_dev.sample_queue.num_buffers);
+	ret = vb2_ioctl_create_bufs(file , priv , p);
+	//printk(KERN_ALERT "after vb2_ioctl_create_bufs , sample_v4l2_dev.sample_queue.num_buffers = %d\r\n" , sample_v4l2_dev.sample_queue.num_buffers);
+	return ret;
+}
 
 static const struct v4l2_ioctl_ops sample_v4l2_ioctl_ops = {
-	.vidioc_enum_fmt_vid_cap = simple_fmt_vid_cap,
-	.vidioc_reqbufs		= vb2_ioctl_reqbufs,
+	.vidioc_enum_fmt_vid_cap = simple_enum_fmt_vid_cap,
+	.vidioc_reqbufs		= debug_vb2_ioctl_reqbufs,
+	.vidioc_create_bufs = debug_vb2_ioctl_create_bufs,
 	.vidioc_querycap = sample_querycap ,
+	.vidioc_s_fmt_vid_cap	=	simple_set_fmt_vid_cap,
 	.vidioc_g_fmt_vid_cap		= sample_g_fmt_cap,
 	.vidioc_querybuf		= vb2_ioctl_querybuf,
 	.vidioc_qbuf			= vb2_ioctl_qbuf,
@@ -132,8 +168,8 @@ int sample_queue_setup(struct vb2_queue *vq,
 		       unsigned *nbuffers, unsigned *nplanes,
 		       unsigned sizes[], struct device *alloc_devs[])
 {
-	printk(KERN_ALERT "sample_queue_setup : enter!\r\n");
-	*nbuffers = 1;
+	printk(KERN_ALERT "sample_queue_setup : enter! *nbuffers = %d , *nplanes = %d , sizes[0] = %d\r\n" , *nbuffers , *nplanes , sizes[0]);
+	//*nbuffers = 1;
 	*nplanes = 1;
 	sizes[0] = 1080;
 	return 0;
