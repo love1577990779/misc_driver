@@ -79,7 +79,19 @@ static const struct v4l2_file_operations simple_v4l2_fops = {
 };
 
 
+int simple_fmt_vid_cap(struct file *file , void *fh , struct v4l2_fmtdesc *f)
+{
+	if(f->index > 1)
+		return -1;
+	else
+		f->pixelformat = V4L2_PIX_FMT_NV12;
+
+	return 0;
+}
+
+
 static const struct v4l2_ioctl_ops sample_v4l2_ioctl_ops = {
+	.vidioc_enum_fmt_vid_cap = simple_fmt_vid_cap,
 	.vidioc_reqbufs		= vb2_ioctl_reqbufs,
 	.vidioc_querycap = sample_querycap ,
 	.vidioc_g_fmt_vid_cap		= sample_g_fmt_cap,
@@ -240,10 +252,6 @@ static int __init hello_init(void)
 	ret = video_register_device(&sample_v4l2_dev.sample_video_dev , VFL_TYPE_GRABBER , 0);
 
 	printk(KERN_ALERT "video_register_device : ret = %d!\n" , ret);
-
-	
-
-
 
 
 	return 0;

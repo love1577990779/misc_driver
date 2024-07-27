@@ -6,5 +6,5 @@ sudo modprobe vivid
 sudo rmmod vivid
 sudo rmmod v4l2_drv.ko || true
 sudo insmod v4l2_drv.ko
-make app
-sudo ./v4l2_app.elf
+##make app
+##sudo ./v4l2_app.elf
