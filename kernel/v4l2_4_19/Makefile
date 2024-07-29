@@ -6,6 +6,7 @@ MODULE_NAME = v4l2_drv
  
 # 编译模块所需的对象文件
 EXTRA_CFLAGS := -Wno-incomplete-pointer-types
+ccflags-y += -DDBG
 
 
 obj-m = $(MODULE_NAME).o
@@ -19,7 +20,7 @@ $(MODULE_NAME)-objs += videobuf2/videobuf2-vmalloc.o
 
 # 编译模块
 driver:
-	make -C $(KERNELDIR) M=$(shell pwd) modules
+	make V=1 -C $(KERNELDIR) M=$(shell pwd) modules
 
 app:
 	gcc -o v4l2_app.elf v4l2_app.c
