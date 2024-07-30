@@ -319,6 +319,7 @@ static int __init simple_v4l2_init(void)
 
 	ret = v4l2_device_register(&sample_v4l2_dev.dev , &sample_v4l2_dev.v4l2_dev);
 
+
 	ret = v4l2_ctrl_handler_init(&sample_v4l2_dev.sample_handler , 10);
 
 	init_ctrl_ops();
@@ -346,6 +347,7 @@ static int __init simple_v4l2_init(void)
 	strscpy(simple_md.bus_info , "simple_md_bus" , sizeof(simple_md.bus_info));
 
 	ret = media_device_register(&simple_md);
+	printk(KERN_ALERT "media_device_register : ret = %d!\n" , ret);
 
 	strscpy(simple_vdev.name , "simple_vdev" , sizeof(simple_vdev.name));
 	strscpy(simple_vdev.entity.name , "vdev_entity" , sizeof(simple_vdev.entity.name));
