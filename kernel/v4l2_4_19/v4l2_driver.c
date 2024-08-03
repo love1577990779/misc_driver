@@ -350,10 +350,10 @@ static int __init simple_v4l2_init(void)
 	printk(KERN_ALERT "media_device_register : ret = %d!\n" , ret);
 
 	strscpy(simple_vdev.name , "simple_vdev" , sizeof(simple_vdev.name));
-	strscpy(simple_vdev.entity.name , "vdev_entity" , sizeof(simple_vdev.entity.name));
 	sample_v4l2_dev.v4l2_dev.mdev = &simple_md;
 	simple_vdev.v4l2_dev = &sample_v4l2_dev.v4l2_dev;
 	ret = video_register_device(&simple_vdev , VFL_TYPE_GRABBER , 0);
+	simple_vdev.entity.name = "vdev_entity";
 	printk(KERN_ALERT "video_register_device : ret = %d!\n" , ret);
 	printk(KERN_ALERT "simple_vdev.media_entity.name = %s\r\n" , simple_vdev.entity.name);
 
@@ -363,7 +363,7 @@ static int __init simple_v4l2_init(void)
 	
 	//sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
 	strscpy(sd.name , "simple_sd" , sizeof(sd.name));
-	strscpy(sd.entity.name , "sd_entity" , sizeof(sd.entity.name));
+	sd.entity.name = "sd_entity";
 	ret = v4l2_device_register_subdev(&sample_v4l2_dev.v4l2_dev, &sd);
 	printk(KERN_ALERT "v4l2_device_register_subdev : ret = %d!\n" , ret);
 
