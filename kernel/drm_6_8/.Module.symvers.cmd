@@ -1,0 +1,1 @@
+savedcmd_/home/zero/imx93/linux-6.1.55-v1.0/drm_6_8/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/zero/imx93/linux-6.1.55-v1.0/drm_6_8/Module.symvers -T /home/zero/imx93/linux-6.1.55-v1.0/drm_6_8/modules.order -i Module.symvers -e 
