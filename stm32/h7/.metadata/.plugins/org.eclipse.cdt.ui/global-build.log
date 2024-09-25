@@ -1,0 +1,161 @@
+20:24:59 **** Clean-only build of configuration Debug for project stm32h743 ****
+make -j8 clean 
+makefile:62: *** multiple target patterns.  Stop.
+"make -j8 clean" terminated with exit code 2. Build might be incomplete.
+20:24:59 **** Clean-only build of configuration Debug for project stm32h743 ****
+make -j8 clean 
+makefile:62: *** multiple target patterns.  Stop.
+"make -j8 clean" terminated with exit code 2. Build might be incomplete.
+20:25:00 **** Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc -mcpu=cortex-m7 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32h743iitx.d" -MT"Startup/startup_stm32h743iitx.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32h743iitx.o" "../Startup/startup_stm32h743iitx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:36:9: warning: implicit declaration of function 'init_rcc' [-Wimplicit-function-declaration]
+   36 |         init_rcc();
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1112	      0	   1568	   2680	    a78	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+20:32:40 **** Clean-only build of configuration Debug for project stm32h743 ****
+make -j8 clean 
+rm -rf ./Startup/startup_stm32h743iitx.d ./Startup/startup_stm32h743iitx.o
+rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/rcc.cyclo ./Src/rcc.d ./Src/rcc.o ./Src/rcc.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32h743.elf stm32h743.list stm32h743.map
+ 
+20:32:40 **** Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc -mcpu=cortex-m7 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32h743iitx.d" -MT"Startup/startup_stm32h743iitx.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32h743iitx.o" "../Startup/startup_stm32h743iitx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1132	      0	   1568	   2700	    a8c	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+21:02:42 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-size  stm32h743.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1132	      0	   1568	   2700	    a8c	stm32h743.elf
+Finished building: default.size.stdout
+ 
+21:03:29 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1128	      0	   1568	   2696	    a88	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+21:08:28 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1156	      0	   1568	   2724	    aa4	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+21:09:16 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1156	      0	   1568	   2724	    aa4	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+21:15:59 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1156	      0	   1568	   2724	    aa4	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+21:26:24 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-size  stm32h743.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1156	      0	   1568	   2724	    aa4	stm32h743.elf
+Finished building: default.size.stdout
+ 
+21:50:24 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1172	      0	   1568	   2740	    ab4	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+21:54:56 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1176	      0	   1568	   2744	    ab8	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
