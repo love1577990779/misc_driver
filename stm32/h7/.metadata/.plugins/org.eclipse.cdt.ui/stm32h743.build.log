@@ -1,17 +1,20 @@
-21:54:56 **** Incremental Build of configuration Debug for project stm32h743 ****
+21:24:42 **** Incremental Build of configuration Debug for project stm32h743 ****
 make -j8 all 
-arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
-arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/git/misc_driver/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: stm32h743.elf
  
 arm-none-eabi-size  stm32h743.elf 
 arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
    text	   data	    bss	    dec	    hex	filename
-   1176	      0	   1568	   2744	    ab8	stm32h743.elf
+   1504	      4	   1564	   3072	    c00	stm32h743.elf
 Finished building: default.size.stdout
  
 Finished building: stm32h743.list
  
 
-21:54:57 Build Finished. 0 errors, 0 warnings. (took 273ms)
+21:24:42 Build Finished. 0 errors, 1 warnings. (took 269ms)
 

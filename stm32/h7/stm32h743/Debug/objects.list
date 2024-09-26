@@ -2,4 +2,5 @@
 "./Src/rcc.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
+"./Src/usart.o"
 "./Startup/startup_stm32h743iitx.o"

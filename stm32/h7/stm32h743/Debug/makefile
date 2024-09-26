@@ -59,8 +59,8 @@ all: main-build
 main-build: stm32h743.elf secondary-outputs
 
 # Tool invocations
-stm32h743.elf stm32h743.map: $(OBJS) $(USER_OBJS) /home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/home/zero/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+stm32h743.elf stm32h743.map: $(OBJS) $(USER_OBJS) /home/zero/git/misc_driver/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/home/zero/git/misc_driver/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

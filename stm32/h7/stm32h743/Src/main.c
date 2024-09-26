@@ -29,10 +29,26 @@
 
 #include "rcc.h"
 #include "stm32h7xx.h"
+#include "uasrt.h"
 
+void delay(unsigned int times)
+{
+	while(times--);
+}
+
+unsigned char tmp = 'a';
 
 int main(void)
 {
 	init_rcc();
-	while(1);
+	init_usart();
+	while(1)
+	{
+		delay(5000);
+		usart1_send(&tmp , 1);
+	}
 }
+
+
+
+

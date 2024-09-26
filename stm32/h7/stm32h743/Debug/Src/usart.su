@@ -1,0 +1,4 @@
+../Src/usart.c:12:6:init_usart1_clk	4	static
+../Src/usart.c:18:6:init_usart1_pin	4	static
+../Src/usart.c:28:6:init_usart	8	static
+../Src/usart.c:38:6:usart1_send	24	static
