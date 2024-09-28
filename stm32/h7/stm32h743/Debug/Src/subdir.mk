@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Src/mac.c \
 ../Src/main.c \
 ../Src/rcc.c \
 ../Src/syscalls.c \
@@ -12,6 +13,7 @@ C_SRCS += \
 ../Src/usart.c 
 
 OBJS += \
+./Src/mac.o \
 ./Src/main.o \
 ./Src/rcc.o \
 ./Src/syscalls.o \
@@ -19,6 +21,7 @@ OBJS += \
 ./Src/usart.o 
 
 C_DEPS += \
+./Src/mac.d \
 ./Src/main.d \
 ./Src/rcc.d \
 ./Src/syscalls.d \
@@ -33,7 +36,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/rcc.cyclo ./Src/rcc.d ./Src/rcc.o ./Src/rcc.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/usart.cyclo ./Src/usart.d ./Src/usart.o ./Src/usart.su
+	-$(RM) ./Src/mac.cyclo ./Src/mac.d ./Src/mac.o ./Src/mac.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/rcc.cyclo ./Src/rcc.d ./Src/rcc.o ./Src/rcc.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/usart.cyclo ./Src/usart.d ./Src/usart.o ./Src/usart.su
 
 .PHONY: clean-Src
 

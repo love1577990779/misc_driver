@@ -1,0 +1,26 @@
+/*
+ * mac.c
+ *
+ *  Created on: Sep 28, 2024
+ *      Author: zero
+ */
+
+#include "stm32h7xx.h"
+
+void init_mac_clk(void)
+{
+	RCC->APB4ENR |= ();
+	RCC->AHB1ENR |= (1<<17)|(1<<16)|(1<<15);
+}
+
+
+void init_mac_pin(void)
+{
+
+}
+
+
+void init_mac(void)
+{
+
+}

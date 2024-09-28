@@ -1,3 +1,4 @@
+"./Src/mac.o"
 "./Src/main.o"
 "./Src/rcc.o"
 "./Src/syscalls.o"

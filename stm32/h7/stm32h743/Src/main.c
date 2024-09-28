@@ -42,6 +42,7 @@ int main(void)
 {
 	init_rcc();
 	init_usart();
+	init_mac();
 	while(1)
 	{
 		delay(5000);

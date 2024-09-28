@@ -207,3 +207,90 @@ Finished building: default.size.stdout
  
 Finished building: stm32h743.list
  
+23:53:50 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/mac.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/mac.d" -MT"Src/mac.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/mac.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/rcc.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/rcc.d" -MT"Src/rcc.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/rcc.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/usart.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/usart.d" -MT"Src/usart.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/usart.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+../Src/mac.c: In function 'init_mac':
+../Src/mac.c:84:33: warning: unused variable 'read_reg' [-Wunused-variable]
+   84 |         volatile unsigned short read_reg = read_phy(0 , 0);
+      |                                 ^~~~~~~~
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/git/misc_driver/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   1504	      4	   1564	   3072	    c00	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+23:54:17 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:22:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   22 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:45:9: warning: implicit declaration of function 'init_mac'; did you mean 'init_rcc'? [-Wimplicit-function-declaration]
+   45 |         init_mac();
+      |         ^~~~~~~~
+      |         init_rcc
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/git/misc_driver/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   2216	      4	   1564	   3784	    ec8	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+00:01:07 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/mac.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/mac.d" -MT"Src/mac.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/mac.o"
+../Src/mac.c: In function 'init_mac':
+../Src/mac.c:84:33: warning: variable 'read_reg' set but not used [-Wunused-but-set-variable]
+   84 |         volatile unsigned short read_reg = read_phy(0 , 0);
+      |                                 ^~~~~~~~
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/git/misc_driver/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   2236	      4	   1564	   3804	    edc	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+00:03:03 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/mac.c" -mcpu=cortex-m7 -std=gnu18 -g3 -DDEBUG -DSTM32 -DSTM32H7SINGLE -DSTM32H743IITx -DSTM32H7 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/mac.d" -MT"Src/mac.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Src/mac.o"
+arm-none-eabi-gcc -o "stm32h743.elf" @"objects.list"   -mcpu=cortex-m7 -T"/home/zero/git/misc_driver/stm32/h7/stm32h743/STM32H743IITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32h743.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32h743.elf
+ 
+arm-none-eabi-size  stm32h743.elf 
+arm-none-eabi-objdump -h -S stm32h743.elf  > "stm32h743.list"
+   text	   data	    bss	    dec	    hex	filename
+   2260	      4	   1564	   3828	    ef4	stm32h743.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32h743.list
+ 
+00:03:26 **** Incremental Build of configuration Debug for project stm32h743 ****
+make -j8 all 
+arm-none-eabi-size  stm32h743.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2260	      4	   1564	   3828	    ef4	stm32h743.elf
+Finished building: default.size.stdout
+ 
