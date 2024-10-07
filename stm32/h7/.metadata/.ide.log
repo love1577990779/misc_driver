@@ -55,3 +55,24 @@
 2024-09-29 00:04:06,710 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Sep 29, 2024 12:04:06 AM java.util.prefs.FileSystemPreferences syncWorld
 2024-09-29 00:04:06,710 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] WARNING: Couldn't flush system prefs: java.util.prefs.BackingStoreException: Couldn't get file lock.
 2024-09-29 00:04:06,710 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-29 00:04:36,708 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Sep 29, 2024 12:04:36 AM java.util.prefs.FileSystemPreferences checkLockFile0ErrorCode
+2024-09-29 00:04:36,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] WARNING: Could not lock System prefs. Unix error code 28882.
+2024-09-29 00:04:36,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-29 00:04:36,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Sep 29, 2024 12:04:36 AM java.util.prefs.FileSystemPreferences syncWorld
+2024-09-29 00:04:36,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] WARNING: Couldn't flush system prefs: java.util.prefs.BackingStoreException: Couldn't get file lock.
+2024-09-29 00:04:36,710 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-29 00:05:06,708 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Sep 29, 2024 12:05:06 AM java.util.prefs.FileSystemPreferences checkLockFile0ErrorCode
+2024-09-29 00:05:06,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] WARNING: Could not lock System prefs. Unix error code 28882.
+2024-09-29 00:05:06,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-29 00:05:06,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Sep 29, 2024 12:05:06 AM java.util.prefs.FileSystemPreferences syncWorld
+2024-09-29 00:05:06,709 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] WARNING: Couldn't flush system prefs: java.util.prefs.BackingStoreException: Couldn't get file lock.
+2024-09-29 00:05:06,710 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-29 00:05:36,707 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Sep 29, 2024 12:05:36 AM java.util.prefs.FileSystemPreferences checkLockFile0ErrorCode
+2024-09-29 00:05:36,707 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] WARNING: Could not lock System prefs. Unix error code 28882.
+2024-09-29 00:05:36,707 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-29 00:05:36,707 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Sep 29, 2024 12:05:36 AM java.util.prefs.FileSystemPreferences syncWorld
+2024-09-29 00:05:36,708 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] WARNING: Couldn't flush system prefs: java.util.prefs.BackingStoreException: Couldn't get file lock.
+2024-09-29 00:05:36,708 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-09-29 00:05:46,913 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SWT SessionManagerDBus: Failed to UnregisterClient: GDBus.Error:org.freedesktop.DBus.Error.NoReply: Message recipient disconnected from message bus without replying
+2024-09-29 00:05:47,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SWT SessionManagerDBus: Failed to connect to org.gnome.SessionManager: The connection is closed
+2024-09-29 00:05:47,048 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SWT SessionManagerDBus: Failed to connect to org.xfce.SessionManager: Error calling StartServiceByName for org.xfce.SessionManager: The connection is closed

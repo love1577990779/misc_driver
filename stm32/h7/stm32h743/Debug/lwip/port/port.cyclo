@@ -1,0 +1,7 @@
+../lwip/port/port.c:38:13:low_level_init	1
+../lwip/port/port.c:77:14:low_level_output	5
+../lwip/port/port.c:124:22:low_level_input	5
+../lwip/port/port.c:166:6:ethernetif_input	3
+../lwip/port/port.c:189:7:ethernetif_init	1
+../lwip/port/port.c:222:6:port_init_lwip	2
+../lwip/port/port.c:256:7:sys_now	1

@@ -30,6 +30,9 @@
 #include "rcc.h"
 #include "stm32h7xx.h"
 #include "uasrt.h"
+#include "mac.h"
+#include "port.h"
+
 
 void delay(unsigned int times)
 {
@@ -42,12 +45,25 @@ int main(void)
 {
 	init_rcc();
 	init_usart();
-	init_mac();
-	while(1)
-	{
-		delay(5000);
-		usart1_send(&tmp , 1);
-	}
+	//init_mac();
+	port_init_lwip();
+	//test_eth();
+	//while(1);
+
+//	while(1)
+//	{
+//		delay(5000);
+//		usart1_send(&tmp , 1);
+//	}
+
+	  while (1)
+	  {
+	    //tx_mutex_get(&mutex_eth, TX_WAIT_FOREVER);
+	    ethernetif_input(&gnetif);
+	    sys_check_timeouts();
+	    //tx_mutex_put(&mutex_eth);
+	    //tx_thread_relinquish();
+	  }
 }
 
 

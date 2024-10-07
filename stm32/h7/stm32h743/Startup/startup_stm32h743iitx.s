@@ -55,6 +55,11 @@ defined in linker script */
   .weak Reset_Handler
   .type Reset_Handler, %function
 Reset_Handler:
+	 #LDR.W     R0, =0xE000ED88    ;
+	 #LDR     R1,[R0]
+	 #ORR     R1,R1,#(0xF << 20)
+	 #STR     R1,[R0]
+
   ldr   r0, =_estack
   mov   sp, r0          /* set stack pointer */
 /* Call the clock system initialization function.*/
