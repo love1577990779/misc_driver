@@ -256,6 +256,13 @@ int stm32_sdram_init(struct udevice *dev)
 	if (params->family == STM32H7_FMC)
 		setbits_le32(&regs->bcr1, FMC_BCR1_FMCEN);
 
+	unsigned char* test_sdram = 0xC0000000;
+	for(unsigned int i = 0 ; i < 100 ; i++)
+		test_sdram[i] = i;
+
+
+
+
 	return 0;
 }
 

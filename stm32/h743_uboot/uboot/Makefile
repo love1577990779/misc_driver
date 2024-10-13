@@ -723,6 +723,10 @@ KBUILD_CFLAGS	+= -Og
 KBUILD_CFLAGS	+= -Wno-maybe-uninitialized
 endif
 
+
+KBUILD_CFLAGS	+= -O0 -g2
+KBUILD_CFLAGS	+= -Wno-maybe-uninitialized
+
 LTO_CFLAGS :=
 LTO_FINAL_LDFLAGS :=
 export LTO_CFLAGS LTO_FINAL_LDFLAGS
@@ -1796,6 +1800,8 @@ cmd_smap = \
 
 u-boot:	$(u-boot-init) $(u-boot-main) $(u-boot-keep-syms-lto) u-boot.lds FORCE
 	+$(call if_changed,u-boot__)
+	arm-none-eabi-ld.bfd -z noexecstack --no-warn-rwx-segments -pie --gc-sections -Bstatic  --no-dynamic-linker -z notext  --build-id=none -Ttext 0xc1f88000 -o u-boot_relc -T u-boot.lds arch/arm/cpu/armv7m/start.o --whole-archive  arch/arm/cpu/built-in.o  arch/arm/cpu/armv7m/built-in.o  arch/arm/lib/built-in.o  arch/arm/mach-stm32/built-in.o  board/st/common/built-in.o  board/st/stm32h743-eval/built-in.o  boot/built-in.o  cmd/built-in.o  common/built-in.o  disk/built-in.o  drivers/built-in.o  drivers/usb/cdns3/built-in.o  drivers/usb/common/built-in.o  drivers/usb/dwc3/built-in.o  drivers/usb/emul/built-in.o  drivers/usb/eth/built-in.o  drivers/usb/host/built-in.o  drivers/usb/isp1760/built-in.o  drivers/usb/mtu3/built-in.o  drivers/usb/musb-new/built-in.o  drivers/usb/musb/built-in.o  drivers/usb/phy/built-in.o  drivers/usb/ulpi/built-in.o  env/built-in.o  fs/built-in.o  lib/built-in.o  net/built-in.o --no-whole-archive arch/arm/lib/eabi_compat.o  arch/arm/lib/lib.a -Map u-boot.map;  true
+	
 ifeq ($(CONFIG_KALLSYMS),y)
 	$(call cmd,smap)
 	$(call cmd,u-boot__) common/system_map.o
@@ -1809,7 +1815,7 @@ quiet_cmd_sym ?= SYM     $@
       cmd_sym ?= $(OBJDUMP) -t $< > $@
 u-boot.sym: u-boot FORCE
 	$(call if_changed,sym)
-
+	$(OBJDUMP) -t u-boot_relc > u-boot_relc.sym
 # Environment processing
 # ---------------------------------------------------------------------------
 

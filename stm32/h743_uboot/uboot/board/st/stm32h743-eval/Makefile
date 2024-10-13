@@ -4,3 +4,4 @@
 # Author(s): Patrice CHOTARD, <patrice.chotard@foss.st.com> for STMicroelectronics.
 
 obj-y	:= stm32h743-eval.o
+obj-y	+= compile_patch.o
