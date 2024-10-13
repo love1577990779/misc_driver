@@ -1,4 +1,0 @@
-../Src/usart.c:12:6:init_usart1_clk	1
-../Src/usart.c:18:6:init_usart1_pin	1
-../Src/usart.c:28:6:init_usart	1
-../Src/usart.c:38:6:usart1_send	3

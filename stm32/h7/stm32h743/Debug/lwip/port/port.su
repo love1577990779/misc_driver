@@ -1,7 +1,0 @@
-../lwip/port/port.c:38:13:low_level_init	16	static
-../lwip/port/port.c:77:14:low_level_output	32	static
-../lwip/port/port.c:124:22:low_level_input	24	static
-../lwip/port/port.c:166:6:ethernetif_input	24	static
-../lwip/port/port.c:189:7:ethernetif_init	16	static
-../lwip/port/port.c:222:6:port_init_lwip	24	static
-../lwip/port/port.c:256:7:sys_now	4	static
