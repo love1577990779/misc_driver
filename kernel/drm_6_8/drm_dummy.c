@@ -12,7 +12,7 @@
 #include <drm/drm_ioctl.h>
 #include <drm/drm_connector.h>
 #include <drm/drm_gem.h>
-#include <drm/drm_gem_dma_helper.h>
+//#include <drm/drm_gem_dma_helper.h>
 
 
 static struct drm_device* drm = NULL;

@@ -1,1 +1,0 @@
-savedcmd_/home/zero/imx93/linux-6.1.55-v1.0/drm_6_8/drm_dummy.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/zero/imx93/linux-6.1.55-v1.0/drm_6_8/drm_dummy.ko /home/zero/imx93/linux-6.1.55-v1.0/drm_6_8/drm_dummy.o /home/zero/imx93/linux-6.1.55-v1.0/drm_6_8/drm_dummy.mod.o
