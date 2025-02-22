@@ -1,0 +1,9 @@
+../Src/lcd.c:10:6:init_lcd_pin	4	static
+../Src/lcd.c:71:6:ltdc_switch	16	static
+../Src/lcd.c:84:6:ltdc_layer_switch	16	static
+../Src/lcd.c:110:6:ltdc_layer_window_config	32	static
+../Src/lcd.c:165:6:ltdc_layer_parameter_config	16	static
+../Src/lcd.c:187:6:init_lcd	8	static
+../Src/lcd.c:217:6:lcd_fill_color	24	static
+../Src/lcd.c:224:9:ltdc_clk_set	32	static
+../Src/lcd.c:258:6:ltdc_init	16	static

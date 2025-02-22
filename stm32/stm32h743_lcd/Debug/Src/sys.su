@@ -1,0 +1,17 @@
+../Src/sys.c:34:6:sys_nvic_set_vector_table	16	static
+../Src/sys.c:45:13:sys_nvic_priority_group_config	24	static
+../Src/sys.c:71:6:sys_nvic_init	32	static
+../Src/sys.c:94:6:sys_nvic_ex_config	40	static
+../Src/sys.c:135:6:sys_gpio_af_set	32	static
+../Src/sys.c:183:6:sys_gpio_set	40	static
+../Src/sys.c:221:6:sys_gpio_pin_set	16	static
+../Src/sys.c:240:9:sys_gpio_pin_get	16	static
+../Src/sys.c:257:6:sys_wfi_set	4	static,ignoring_inline_asm
+../Src/sys.c:267:6:sys_intx_disable	4	static,ignoring_inline_asm
+../Src/sys.c:277:6:sys_intx_enable	4	static,ignoring_inline_asm
+../Src/sys.c:288:6:sys_msr_msp	24	static,ignoring_inline_asm
+../Src/sys.c:298:6:sys_standby	8	static
+../Src/sys.c:316:6:sys_soft_reset	4	static
+../Src/sys.c:326:6:sys_cache_enable	24	static,ignoring_inline_asm
+../Src/sys.c:364:9:sys_clock_set	32	static
+../Src/sys.c:477:6:sys_stm32_clock_init	24	static

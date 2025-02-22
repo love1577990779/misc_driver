@@ -1,0 +1,8 @@
+../Src/mac.c:26:6:enable_mac	4	static
+../Src/mac.c:35:6:init_dma_desc	16	static
+../Src/mac.c:72:6:init_mac_clk	4	static
+../Src/mac.c:80:6:init_mac_pin	4	static
+../Src/mac.c:123:6:write_phy	16	static
+../Src/mac.c:132:16:read_phy	16	static
+../Src/mac.c:141:6:init_mac	16	static
+../Src/mac.c:215:6:test_eth	16	static

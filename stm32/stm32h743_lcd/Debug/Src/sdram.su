@@ -1,0 +1,4 @@
+../Src/sdram.c:41:9:sdram_send_cmd	24	static
+../Src/sdram.c:67:6:sdram_init	32	static
+../Src/sdram.c:148:6:fmc_sdram_write_buffer	24	static
+../Src/sdram.c:165:6:fmc_sdram_read_buffer	24	static
