@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/misc_driver/kernel/drm_6_8_x86/modules.order := {   echo /home/zero/git/misc_driver/kernel/drm_6_8_x86/drm_dummy.o; :; } > /home/zero/git/misc_driver/kernel/drm_6_8_x86/modules.order

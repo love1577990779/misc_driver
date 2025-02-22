@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/misc_driver/kernel/framebuffer/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/zero/git/misc_driver/kernel/framebuffer/Module.symvers -T /home/zero/git/misc_driver/kernel/framebuffer/modules.order -i Module.symvers -e 

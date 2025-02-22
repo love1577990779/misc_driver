@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/misc_driver/kernel/drm_6_6/Module.symvers :=  scripts/mod/modpost -M        -o /home/zero/git/misc_driver/kernel/drm_6_6/Module.symvers -T /home/zero/git/misc_driver/kernel/drm_6_6/modules.order -i Module.symvers -e 

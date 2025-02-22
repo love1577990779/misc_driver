@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/misc_driver/kernel/framebuffer/framebuffer_dummy.mod := printf '%s\n'   framebuffer_dummy.o | awk '!x[$$0]++ { print("/home/zero/git/misc_driver/kernel/framebuffer/"$$0) }' > /home/zero/git/misc_driver/kernel/framebuffer/framebuffer_dummy.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/misc_driver/kernel/framebuffer/modules.order := {   echo /home/zero/git/misc_driver/kernel/framebuffer/framebuffer_dummy.o; :; } > /home/zero/git/misc_driver/kernel/framebuffer/modules.order

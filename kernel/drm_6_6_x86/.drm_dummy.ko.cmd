@@ -1,0 +1,1 @@
+savedcmd_/home/zero/git/misc_driver/kernel/drm_6_6_x86/drm_dummy.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/zero/git/misc_driver/kernel/drm_6_6_x86/drm_dummy.ko /home/zero/git/misc_driver/kernel/drm_6_6_x86/drm_dummy.o /home/zero/git/misc_driver/kernel/drm_6_6_x86/drm_dummy.mod.o
